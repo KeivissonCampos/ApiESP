@@ -3,13 +3,14 @@ let comando = "NORMAL";
 
 export default function handler(req, res) {
 
-    // Botão do site enviando comando
+    console.log("Comando atual:", comando);
+
     if(req.query.set){
         comando = req.query.set;
-        return res.status(200).send("OK");
+        console.log("Novo comando:", comando);
+        return res.send("OK");
     }
 
-    // ESP enviando valor
     if(req.query.valor){
 
         ultimoValor = req.query.valor;
@@ -18,9 +19,10 @@ export default function handler(req, res) {
 
         comando = "NORMAL";
 
-        return res.status(200).send(resposta);
+        console.log("Respondendo:", resposta);
+
+        return res.send(resposta);
     }
 
-    // Site consultando valor
-    return res.status(200).send(ultimoValor);
+    return res.send(ultimoValor);
 }
