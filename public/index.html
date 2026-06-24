@@ -6,6 +6,7 @@
     <title>Monitor ESP32</title>
 
     <style>
+
         body{
             font-family:Arial;
             text-align:center;
@@ -15,16 +16,26 @@
         #valor{
             font-size:80px;
             font-weight:bold;
+            margin:20px;
         }
+
+        button{
+            font-size:25px;
+            padding:15px 30px;
+            cursor:pointer;
+        }
+
     </style>
 
 </head>
 
 <body>
 
-    <h1>Valor recebido do ESP32</h1>
+    <h1>Contador ESP32</h1>
 
     <div id="valor">0</div>
+
+    <button onclick="zerar()">ZERAR CONTADOR</button>
 
     <script>
 
@@ -32,9 +43,16 @@
 
             let resposta = await fetch('/api/valor');
 
-            let texto = await resposta.text();
+            let valor = await resposta.text();
 
-            document.getElementById("valor").innerText = texto;
+            document.getElementById("valor").innerText = valor;
+        }
+
+        async function zerar(){
+
+            await fetch('/api/comando?set=ZERAR');
+
+            alert("Comando enviado");
         }
 
         atualizar();
