@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor ESP32</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        #valor{
+            font-size:80px;
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Valor recebido do ESP32</h1>
+
+    <div id="valor">0</div>
+
+    <script>
+
+        async function atualizar(){
+
+            let resposta = await fetch('/api/valor');
+
+            let texto = await resposta.text();
+
+            document.getElementById("valor").innerText = texto;
+        }
+
+        atualizar();
+
+        setInterval(atualizar,1000);
+
+    </script>
+
+</body>
+
+</html>
