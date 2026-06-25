@@ -1,28 +1,20 @@
-let ultimoValor = "0";
-let comando = "NORMAL";
+let statusDrone = 0;
 
 export default function handler(req, res) {
 
-    console.log("Comando atual:", comando);
+    // ESP envia o status
+    if (req.query.status !== undefined) {
 
-    if(req.query.set){
-        comando = req.query.set;
-        console.log("Novo comando:", comando);
+        statusDrone = Number(req.query.status);
+
+        console.log("Status recebido:", statusDrone);
+
         return res.send("OK");
     }
 
-    if(req.query.valor){
+    // Página consulta o status
+    return res.json({
+        status: statusDrone
+    });
 
-        ultimoValor = req.query.valor;
-
-        const resposta = comando;
-
-        comando = "NORMAL";
-
-        console.log("Respondendo:", resposta);
-
-        return res.send(resposta);
-    }
-
-    return res.send(ultimoValor);
 }

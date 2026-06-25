@@ -3,64 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor ESP32</title>
+    
+    <title>AgroDrone - Painel de Controle</title>
 
-    <style>
-
-        body{
-            font-family:Arial;
-            text-align:center;
-            margin-top:50px;
-        }
-
-        #valor{
-            font-size:80px;
-            font-weight:bold;
-            margin:20px;
-        }
-
-        button{
-            font-size:25px;
-            padding:15px 30px;
-            cursor:pointer;
-        }
-
-    </style>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer=""></script>
 
 </head>
-
 <body>
 
-    <h1>Contador ESP32</h1>
+    <header>
+        <h1>Drone Proteção Inteligente</h1>
+        <p>Telemetria e Monitoramento de Safra em Tempo Real</p>
+    </header>
 
-    <div id="valor">0</div>
+    <main class="dashboard">
 
-    <button onclick="zerar()">ZERAR CONTADOR</button>
+        <section class="card full-width">
+            <h2>Scanner da Câmera (IA)</h2>
+            
+            <div id="alerta-container" class="alerta-box">
+                <strong id="alerta-titulo">Aguardando Drone...</strong>
+                <p id="alerta-desc" style="margin-top: 5px;">Inicie a simulação para receber o relatório da câmera.</p>
+            </div>
+        </section>
 
-    <script>
+        <section class="card">
+            <h2>Condições Climáticas (Sengés - PR)</h2>
+            <div class="info-item">
+                <span>Temperatura Atual:</span>
+                <span id="temp-atual">Carregando...</span>
+            </div>
+            <div class="info-item">
+                <span>Umidade do Ar:</span>
+                <span id="umidade-atual">Carregando...</span>
+            </div>
+            <div class="info-item">
+                <span>Vento:</span>
+                <span id="vento-atual">Carregando...</span>
+            </div>
+            <div class="info-item">
+                <span>Avaliação do Clima:</span>
+                <span id="clima-avaliacao" class="status-bom">Analisando...</span>
+            </div>
+        </section>
 
-        async function atualizar(){
+        <section class="card">
+            <h2>Ciclo da Safra Atual</h2>
+            <div class="info-item">
+                <span>Cultura Atual:</span>
+                <span>Soja</span>
+            </div>
+            <div class="info-item">
+                <span>Tempo entre Safras:</span>
+                <span>30 dias (Período de pousio)</span>
+            </div>
+            <div class="info-item">
+                <span>Dias desde o Plantio:</span>
+                <span>45 dias</span>
+            </div>
+            <div class="info-item">
+                <span>Tempo até a Colheita:</span>
+                <span style="color: #2ecc71;">~ 75 dias restantes</span>
+            </div>
+        </section>
 
-            let resposta = await fetch('/api/valor');
-
-            let valor = await resposta.text();
-
-            document.getElementById("valor").innerText = valor;
-        }
-
-        async function zerar(){
-
-            await fetch('/api/valor?set=ZERAR');
-
-            alert("Comando enviado");
-        }
-
-        atualizar();
-
-        setInterval(atualizar,1000);
-
-    </script>
-
+    </main>
 </body>
-
 </html>

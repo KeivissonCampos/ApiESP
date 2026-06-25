@@ -1,0 +1,141 @@
+/* --- ESTILOS GERAIS (PALETA: VERDE, PRETO, CINZA) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #1e1e1e;
+            border-bottom: 3px solid #2ecc71;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #2ecc71;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        /* --- LAYOUT EM GRID --- */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .card.full-width {
+            grid-column: span 2;
+        }
+
+        .card h2 {
+            color: #2ecc71;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        /* --- DESTAQUE PARA O CARD DO DRONE --- */
+        .card.full-width h2 {
+            font-size: 1.8rem; /* Título maior */
+        }
+
+        .card.full-width p {
+            font-size: 1.2rem; /* Texto descritivo maior */
+        }
+
+        .alerta-box strong {
+            font-size: 1.4rem; /* Título do alerta interno maior */
+        }
+
+        .alerta-box p {
+            font-size: 1.2rem !important; /* Texto do alerta interno maior */
+        }
+
+        /* --- SEÇÃO DO SIMULADOR --- */
+        .btn-simular {
+            background-color: #2ecc71;
+            color: #121212;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.2rem; /* Botão maior para destacar */
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-simular:hover {
+            background-color: #27ae60;
+        }
+
+        .alerta-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            border-left: 5px solid #555;
+            transition: all 0.5s ease;
+        }
+
+        .alerta-fogo { border-left-color: #e74c3c; color: #e74c3c; }
+        .alerta-erosao { border-left-color: #f39c12; color: #f39c12; }
+        .alerta-inundacao { border-left-color: #3498db; color: #3498db; }
+        .alerta-normal { border-left-color: #2ecc71; color: #2ecc71; }
+
+        /* --- INFORMAÇÕES DE SAFRA E CLIMA --- */
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .info-item span:first-child {
+            color: #a0a0a0;
+        }
+
+        .info-item span:last-child {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .status-bom { color: #2ecc71 !important; }
+        .status-alerta { color: #f39c12 !important; }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            .card.full-width {
+                grid-column: span 1;
+            }
+        }
