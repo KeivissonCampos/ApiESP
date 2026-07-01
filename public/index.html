@@ -20,11 +20,19 @@
     <main class="dashboard">
 
         <section class="card full-width">
-            <h2>Scanner da Câmera (IA)</h2>
-            
+            <div class="scanner-header">
+                <h2>Scanner da Câmera (IA)</h2>
+
+                <button id="btnReset" class="btn-reset">
+                    Iniciar análise
+                </button>
+            </div>
+
             <div id="alerta-container" class="alerta-box">
                 <strong id="alerta-titulo">Aguardando Drone...</strong>
-                <p id="alerta-desc" style="margin-top: 5px;">Inicie a simulação para receber o relatório da câmera.</p>
+                <p id="alerta-desc" style="margin-top: 5px;">
+                    Inicie a simulação para receber o relatório da câmera.
+                </p>
             </div>
         </section>
 

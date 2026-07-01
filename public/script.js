@@ -2,6 +2,20 @@
 // CLIMA REAL (OPEN-METEO)
 // ------------------------------
 
+document.getElementById("btnReset").addEventListener("click", async () => {
+    try {
+        const resposta = await fetch("https://api-esp-brown.vercel.app/api/valor?status=0");
+
+        if (resposta.ok) {
+            console.log("Status enviado com sucesso!");
+        } else {
+            console.log("Erro ao enviar status.");
+        }
+    } catch (erro) {
+        console.error("Erro:", erro);
+    }
+});
+
 async function carregarClimaSenges() {
 
     const lat = -24.11;
